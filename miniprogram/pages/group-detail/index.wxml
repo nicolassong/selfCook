@@ -1,0 +1,37 @@
+<view class="detail-page" wx:if="{{group}}">
+  <view class="hero-card">
+    <view class="hero-top">
+      <view>
+        <view class="hero-title">{{group.title}}</view>
+        <view class="hero-sub">{{group.groupNotice || '今天吃点好的，准时下单更安心'}}</view>
+      </view>
+      <view class="hero-tag">{{group.statusText}}</view>
+    </view>
+    <view class="hero-meta">截单时间：{{group.cutoffAt}}</view>
+    <view class="hero-meta">菜单项：{{group.itemCount}}</view>
+  </view>
+
+  <view class="section-title">本次接龙商品</view>
+  <block wx:for="{{group.items}}" wx:key="id">
+    <view class="item-card">
+      <view class="item-top">
+        <view>
+          <view class="item-title">{{item.productName}}</view>
+          <view class="item-sub">{{item.skuName}}</view>
+        </view>
+        <view class="price-wrap">
+          <view class="price-symbol">￥</view>
+          <view class="price-value">{{item.price}}</view>
+        </view>
+      </view>
+      <view class="item-meta-row">
+        <view class="meta-chip">库存 {{item.stockAvailable}}</view>
+        <view class="meta-chip">限购 {{item.limitPerUser || '不限'}} / 人</view>
+      </view>
+      <view class="item-bottom">
+        <view class="stock-chip">原价 ￥{{item.originalPrice || item.price}}</view>
+        <button class="buy-btn {{item.canBuy ? '' : 'buy-btn-disabled'}}" bindtap="goCreateOrder" data-itemid="{{item.id}}" data-price="{{item.price}}" data-disabled="{{!item.canBuy}}">{{item.buyButtonText}}</button>
+      </view>
+    </view>
+  </block>
+</view>

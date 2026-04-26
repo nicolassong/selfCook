@@ -1,0 +1,22 @@
+<view class="orders-page">
+  <view class="page-title">我的订单</view>
+  <block wx:for="{{orders}}" wx:key="id">
+    <view class="order-card" bindtap="goDetail" data-orderno="{{item.orderNo}}">
+      <view class="order-head">
+        <view>
+          <view class="order-no">{{item.orderNo}}</view>
+          <view class="order-contact">{{item.contactName}} {{item.contactPhone}}</view>
+        </view>
+        <view class="order-tag">{{item.statusText}}</view>
+      </view>
+      <view class="order-body">
+        <view class="order-meta">履约方式：{{item.fulfillmentModeText}}</view>
+        <view class="order-meta">实付金额：￥{{item.paidAmount}}</view>
+      </view>
+      <view class="order-foot">
+        <view class="detail-link">查看详情</view>
+        <button wx:if="{{item.status === ORDER_STATUS.joined}}" class="cancel-btn" bindtap="cancelOrder" data-id="{{item.id}}">取消订单</button>
+      </view>
+    </view>
+  </block>
+</view>

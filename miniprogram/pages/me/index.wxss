@@ -1,0 +1,117 @@
+.me-page {
+  min-height: 100vh;
+  padding: 32rpx;
+  background: linear-gradient(180deg, #fff7ed 0%, #fff 24%, #f8fafc 100%);
+}
+
+.profile-card {
+  padding: 34rpx;
+  border-radius: 32rpx;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  color: #fff;
+  box-shadow: 0 24rpx 56rpx rgba(17, 24, 39, 0.18);
+}
+
+.profile-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24rpx;
+}
+
+.profile-name {
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.profile-phone {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.profile-tip {
+  margin-top: 24rpx;
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.points-badge {
+  min-width: 160rpx;
+  padding: 18rpx 20rpx;
+  border-radius: 24rpx;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.points-value {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.points-label {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20rpx;
+  margin-top: 26rpx;
+}
+
+.quick-item {
+  display: block;
+  padding: 28rpx;
+  border-radius: 28rpx;
+  background: #fff;
+  box-shadow: 0 12rpx 36rpx rgba(15, 23, 42, 0.06);
+}
+
+.quick-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #111827;
+}
+
+.quick-sub {
+  margin-top: 12rpx;
+  font-size: 22rpx;
+  color: #6b7280;
+}
+
+.info-card {
+  margin-top: 22rpx;
+  padding: 28rpx;
+  border-radius: 28rpx;
+  background: #fff;
+  box-shadow: 0 12rpx 36rpx rgba(15, 23, 42, 0.06);
+}
+
+.card-title {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #111827;
+}
+
+.card-text {
+  margin-top: 14rpx;
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #6b7280;
+}
+
+.card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.card-link {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #f97316;
+}

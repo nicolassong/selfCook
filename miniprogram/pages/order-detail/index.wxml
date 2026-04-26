@@ -1,0 +1,40 @@
+<view class="order-detail-page" wx:if="{{order}}">
+  <view class="status-card">
+    <view>
+      <view class="status-title">订单状态</view>
+      <view class="status-text">{{order.statusText}}</view>
+    </view>
+    <view class="status-no">{{order.orderNo}}</view>
+  </view>
+
+  <view class="detail-card">
+    <view class="card-title">订单信息</view>
+    <view class="detail-line">联系人：{{order.contactName}} {{order.contactPhone}}</view>
+    <view class="detail-line">履约方式：{{order.fulfillmentModeText}}</view>
+    <view class="detail-line">创建时间：{{order.createdAt}}</view>
+    <view class="detail-line">地址：{{order.deliveryAddressSnapshot || '自提'}}</view>
+    <view class="detail-line">备注：{{order.remark || '无'}}</view>
+  </view>
+
+  <view class="amount-card">
+    <view class="card-title light">金额明细</view>
+    <view class="amount-row"><view>商品金额</view><view>￥{{order.goodsAmount}}</view></view>
+    <view class="amount-row"><view>优惠金额</view><view>- ￥{{order.discountAmount}}</view></view>
+    <view class="amount-row"><view>配送费</view><view>￥{{order.deliveryFee}}</view></view>
+    <view class="amount-row total"><view>实付金额</view><view>￥{{order.paidAmount}}</view></view>
+  </view>
+
+  <view class="card-title standalone">商品清单</view>
+  <block wx:for="{{order.items}}" wx:key="id">
+    <view class="goods-card">
+      <view class="goods-top">
+        <view>
+          <view class="goods-title">{{item.productName}}</view>
+          <view class="goods-sub">{{item.skuName}} × {{item.quantity}}</view>
+        </view>
+        <view class="goods-price">￥{{item.subtotalAmount}}</view>
+      </view>
+      <view class="goods-unit">单价：￥{{item.unitPrice}}</view>
+    </view>
+  </block>
+</view>

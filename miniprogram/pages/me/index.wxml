@@ -1,0 +1,49 @@
+<view class="me-page" wx:if="{{user}}">
+  <view class="profile-card">
+    <view class="profile-main">
+      <view>
+        <view class="profile-name">{{user.nickname}}</view>
+        <view class="profile-phone">手机号：{{user.phone}}</view>
+      </view>
+      <view class="points-badge">
+        <view class="points-value">{{user.pointsBalance}}</view>
+        <view class="points-label">积分</view>
+      </view>
+    </view>
+    <view class="profile-tip">今日也要好好吃饭，准时下单更安心</view>
+  </view>
+
+  <view class="quick-grid">
+    <navigator class="quick-item" url="/pages/orders/index">
+      <view class="quick-title">我的订单</view>
+      <view class="quick-sub">查看全部订单</view>
+    </navigator>
+    <navigator class="quick-item" url="/pages/address/index">
+      <view class="quick-title">地址管理</view>
+      <view class="quick-sub">配送地址维护</view>
+    </navigator>
+    <navigator class="quick-item" url="/pages/coupons/index">
+      <view class="quick-title">优惠券</view>
+      <view class="quick-sub">共 {{coupons.length}} 张</view>
+    </navigator>
+    <navigator class="quick-item" url="/pages/notifications/index">
+      <view class="quick-title">消息通知</view>
+      <view class="quick-sub">最近 {{notifications.length}} 条</view>
+    </navigator>
+  </view>
+
+  <view class="info-card">
+    <view class="card-title">默认地址</view>
+    <view class="card-text">{{addresses.length ? addresses[0].detailAddress : '暂无地址，去新增一个吧'}}</view>
+  </view>
+
+  <view class="info-card">
+    <view class="card-row">
+      <view>
+        <view class="card-title">积分明细</view>
+        <view class="card-text">最近 {{points.length}} 条记录</view>
+      </view>
+      <navigator class="card-link" url="/pages/points/index">查看</navigator>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,19 @@
+<view class="coupon-page">
+  <view class="page-title">我的优惠券</view>
+  <block wx:for="{{coupons}}" wx:key="id">
+    <view class="coupon-card" style="opacity: {{item.display.statusText === '可使用' ? 1 : 0.72}};">
+      <view class="coupon-top">
+        <view>
+          <view class="coupon-title">{{item.coupon.name || ('券 #' + item.couponId)}}</view>
+          <view class="coupon-status" style="color: {{item.display.statusColor}};">{{item.display.statusText}}</view>
+        </view>
+        <view class="coupon-price">￥{{item.coupon.amount}}</view>
+      </view>
+      <view class="coupon-text">说明：{{item.display.usableText}}</view>
+      <view class="coupon-text">门槛：满 ￥{{item.coupon.thresholdAmount}} 可用</view>
+      <view class="coupon-text">类型：{{item.coupon.couponType}}</view>
+      <view class="coupon-text">生效：{{item.validFrom}}</view>
+      <view class="coupon-text">失效：{{item.validTo}}</view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,13 @@
+<view class="notifications-page">
+  <view class="page-title">消息通知</view>
+  <block wx:for="{{notifications}}" wx:key="id">
+    <view class="notice-card">
+      <view class="notice-top">
+        <view class="notice-title">{{item.sceneCode}}</view>
+        <view class="notice-tag">{{item.sendStatus}}</view>
+      </view>
+      <view class="notice-text">模板：{{item.templateId}}</view>
+      <view class="notice-text">失败原因：{{item.failReason || '无'}}</view>
+    </view>
+  </block>
+</view>

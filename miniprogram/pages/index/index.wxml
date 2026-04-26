@@ -1,0 +1,39 @@
+<view class="home-page">
+  <view class="hero-card">
+    <view class="hero-badge">selfCook 团购</view>
+    <view class="hero-title">今日接龙</view>
+    <view class="hero-subtitle">选择团活动，快速下单，准时取餐或配送到家</view>
+    <view class="hero-metrics">
+      <view class="metric-item">
+        <view class="metric-value">{{groups.length}}</view>
+        <view class="metric-label">进行中活动</view>
+      </view>
+      <view class="metric-item">
+        <view class="metric-value">快</view>
+        <view class="metric-label">下单体验</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-title">可参与团活动</view>
+
+  <block wx:for="{{groups}}" wx:key="id">
+    <view class="group-card" bindtap="goDetail" data-id="{{item.id}}">
+      <view class="group-top">
+        <view class="group-title-wrap">
+          <view class="group-title">{{item.title}}</view>
+          <view class="group-sub">支持 {{item.fulfillmentModeText}} 履约</view>
+        </view>
+        <view class="group-tag">{{item.statusText}}</view>
+      </view>
+      <view class="group-info-row">
+        <view class="info-chip">截单：{{item.cutoffAt}}</view>
+      </view>
+      <view class="group-menu-summary">{{item.itemsSummary}}</view>
+      <view class="group-footer">
+        <view class="footer-text">菜单项 {{item.itemCount}}</view>
+        <view class="footer-cta">立即查看</view>
+      </view>
+    </view>
+  </block>
+</view>

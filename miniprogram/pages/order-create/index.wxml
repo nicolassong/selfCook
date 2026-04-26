@@ -1,0 +1,82 @@
+<view class="order-page">
+  <view class="order-panel">
+    <view class="panel-title">填写订单</view>
+
+    <view class="field-block">
+      <view class="field-label">联系人</view>
+      <input class="field-input" value="{{contactName}}" data-field="contactName" bindinput="setField" />
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">手机号</view>
+      <input class="field-input" value="{{contactPhone}}" data-field="contactPhone" bindinput="setField" />
+    </view>
+
+    <view class="field-block">
+      <view class="field-row">
+        <view class="field-label">选择商品</view>
+        <view class="quick-actions">
+          <button size="mini" class="quick-btn" bindtap="quickAddRecommended">一键加购推荐</button>
+          <button size="mini" class="quick-btn quick-btn-ghost" bindtap="clearAllItems">全部清空</button>
+        </view>
+      </view>
+      <block wx:for="{{groupItems}}" wx:key="id">
+        <view class="item-brief {{item.purchasable ? '' : 'item-brief-disabled'}}">
+          <view class="item-brief-top">
+            <view>
+              <view class="item-title">{{item.productName}}（{{item.skuName}}）</view>
+              <view class="item-hint">库存 {{item.stockAvailable}}，每人限购 {{item.limitPerUser || '不限'}}，可买 {{item.maxPurchasable}}</view>
+            </view>
+            <view class="item-price">￥{{item.price}}</view>
+          </view>
+          <view class="quantity-box">
+            <button size="mini" class="qty-btn" data-itemid="{{item.id}}" data-delta="-1" bindtap="changeItemQuantity" disabled="{{!item.purchasable}}">-</button>
+            <view class="qty-value">{{quantityMap[item.id] || 0}}</view>
+            <button size="mini" class="qty-btn" data-itemid="{{item.id}}" data-delta="1" bindtap="changeItemQuantity" disabled="{{!item.purchasable}}">+</button>
+          </view>
+        </view>
+      </block>
+      <view class="hint-text">{{quantityHint}}</view>
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">履约方式</view>
+      <picker mode="selector" range="{{['pickup','delivery']}}" bindchange="setMode">
+        <view class="field-picker">{{mode}}</view>
+      </picker>
+    </view>
+
+    <view class="field-block" wx:if="{{mode === 'delivery'}}">
+      <view class="field-row">
+        <view class="field-label">配送地址</view>
+        <navigator class="field-link" url="/pages/address/index">管理地址</navigator>
+      </view>
+      <picker mode="selector" range="{{addresses}}" range-key="detailAddress" bindchange="chooseAddress">
+        <view class="field-picker">{{selectedAddressText || '暂无地址，请先新增'}}</view>
+      </picker>
+    </view>
+
+    <view class="field-block">
+      <view class="field-label">优惠券</view>
+      <picker mode="selector" range="{{couponOptions}}" range-key="label" bindchange="chooseCoupon">
+        <view class="field-picker">{{selectedCouponText}}</view>
+      </picker>
+      <view class="hint-text">{{couponHint}}</view>
+    </view>
+  </view>
+
+  <view class="amount-card">
+    <view class="amount-row"><view>已选数量</view><view>{{totalCount}} 份</view></view>
+    <view class="amount-row"><view>优惠</view><view>- ￥{{discountAmount}}</view></view>
+    <view class="amount-row"><view>商品合计</view><view>￥{{totalAmount}}</view></view>
+    <view class="amount-row total"><view>应付</view><view>￥{{payableAmount}}</view></view>
+  </view>
+
+  <view class="submit-bar">
+    <view>
+      <view class="submit-label">实付金额</view>
+      <view class="submit-price">￥{{payableAmount}}</view>
+    </view>
+    <button class="submit-btn" bindtap="submitOrder">提交订单</button>
+  </view>
+</view>

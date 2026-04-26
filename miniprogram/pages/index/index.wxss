@@ -1,0 +1,140 @@
+.home-page {
+  min-height: 100vh;
+  padding: 32rpx;
+  background: linear-gradient(180deg, #fff7ed 0%, #fff 28%, #f8fafc 100%);
+}
+
+.hero-card {
+  padding: 36rpx;
+  border-radius: 32rpx;
+  background: linear-gradient(135deg, #f97316, #fb7185);
+  color: #fff;
+  box-shadow: 0 24rpx 64rpx rgba(249, 115, 22, 0.22);
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 8rpx 18rpx;
+  border-radius: 999rpx;
+  background: rgba(255, 255, 255, 0.18);
+  font-size: 22rpx;
+}
+
+.hero-title {
+  margin-top: 20rpx;
+  font-size: 48rpx;
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  margin-top: 14rpx;
+  font-size: 26rpx;
+  line-height: 1.6;
+  opacity: 0.94;
+}
+
+.hero-metrics {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 28rpx;
+}
+
+.metric-item {
+  flex: 1;
+  padding: 22rpx;
+  border-radius: 24rpx;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.metric-value {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.metric-label {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  opacity: 0.9;
+}
+
+.section-title {
+  margin: 32rpx 4rpx 20rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #111827;
+}
+
+.group-card {
+  margin-bottom: 20rpx;
+  padding: 28rpx;
+  border-radius: 28rpx;
+  background: #fff;
+  box-shadow: 0 12rpx 40rpx rgba(15, 23, 42, 0.06);
+}
+
+.group-top,
+.group-footer,
+.group-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.group-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.group-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #111827;
+}
+
+.group-sub {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #6b7280;
+}
+
+.group-tag {
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: #ffedd5;
+  color: #ea580c;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.group-info-row {
+  margin-top: 22rpx;
+}
+
+.info-chip {
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: #f3f4f6;
+  color: #4b5563;
+  font-size: 22rpx;
+}
+.group-menu-summary {
+  margin-top: 14rpx;
+  font-size: 22rpx;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.group-footer {
+  margin-top: 24rpx;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: #6b7280;
+}
+
+.footer-cta {
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #f97316;
+}

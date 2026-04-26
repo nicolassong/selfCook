@@ -1,0 +1,13 @@
+<view class="points-page">
+  <view class="page-title">积分明细</view>
+  <block wx:for="{{points}}" wx:key="id">
+    <view class="points-card">
+      <view class="points-top">
+        <view class="points-title">{{item.sourceType}}</view>
+        <view class="points-value {{item.changeValue > 0 ? 'plus' : 'minus'}}">{{item.changeValue > 0 ? '+' : ''}}{{item.changeValue}}</view>
+      </view>
+      <view class="points-text">余额：{{item.balanceAfter}}</view>
+      <view class="points-text">备注：{{item.remark}}</view>
+    </view>
+  </block>
+</view>

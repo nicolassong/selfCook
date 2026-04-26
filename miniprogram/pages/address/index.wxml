@@ -1,0 +1,25 @@
+<view class="address-page">
+  <view class="page-title">地址管理</view>
+  <view class="form-card">
+    <view class="card-title">{{editingId ? '编辑地址' : '新增地址'}}</view>
+    <input class="field-input" placeholder="联系人" value="{{form.contactName}}" data-field="contactName" bindinput="setField" />
+    <input class="field-input" placeholder="手机号" value="{{form.contactPhone}}" data-field="contactPhone" bindinput="setField" />
+    <input class="field-input" placeholder="详细地址" value="{{form.detailAddress}}" data-field="detailAddress" bindinput="setField" />
+    <button class="save-btn" bindtap="saveAddress">保存地址</button>
+  </view>
+  <block wx:for="{{addresses}}" wx:key="id">
+    <view class="address-card">
+      <view class="address-top">
+        <view class="address-name">{{item.contactName}}</view>
+        <view class="default-tag" wx:if="{{item.isDefault}}">默认</view>
+      </view>
+      <view class="address-phone">{{item.contactPhone}}</view>
+      <view class="address-detail">{{item.province}}{{item.city}}{{item.district}}{{item.detailAddress}}</view>
+      <view class="action-row">
+        <button size="mini" class="ghost-btn" bindtap="editAddress" data-id="{{item.id}}">编辑</button>
+        <button size="mini" class="ghost-btn" bindtap="setDefault" data-id="{{item.id}}">设为默认</button>
+        <button size="mini" class="danger-btn" bindtap="removeAddress" data-id="{{item.id}}">删除</button>
+      </view>
+    </view>
+  </block>
+</view>
