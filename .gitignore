@@ -29,3 +29,7 @@ miniprogram/project.private.config.json
 
 # Uploads and temporary files
 backend-gin/uploads/
+
+# Local third-party source checkouts
+crewAi/
+crewAI/
