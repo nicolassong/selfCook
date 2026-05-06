@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/ai-chat/index",
     "pages/group-detail/index",
     "pages/order-create/index",
     "pages/order-detail/index",
@@ -27,6 +28,10 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页"
+      },
+      {
+        "pagePath": "pages/ai-chat/index",
+        "text": "AI"
       },
       {
         "pagePath": "pages/orders/index",

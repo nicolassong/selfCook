@@ -1,5 +1,8 @@
+const config = require('./config');
+
 App({
   globalData: {
-    baseUrl: 'http://localhost:8081/api/v1'
+    baseUrl: config.baseUrl,
+    assetBaseUrl: config.assetBaseUrl
   }
 });

@@ -1,0 +1,119 @@
+.chat-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f7f8fa;
+}
+
+.messages {
+  flex: 1;
+  height: calc(100vh - 250rpx);
+  box-sizing: border-box;
+  padding: 28rpx 28rpx 12rpx;
+}
+
+.message-row {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+
+.message-row.user {
+  justify-content: flex-end;
+}
+
+.message-row.assistant {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  max-width: 76%;
+  padding: 22rpx 24rpx;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.message-row.user .message-bubble {
+  color: #fff;
+  background: #f97316;
+  border-bottom-right-radius: 8rpx;
+}
+
+.message-row.assistant .message-bubble {
+  color: #111827;
+  background: #fff;
+  border-bottom-left-radius: 8rpx;
+  box-shadow: 0 8rpx 28rpx rgba(15, 23, 42, 0.05);
+}
+
+.message-bubble.muted {
+  color: #6b7280;
+}
+
+.quick-panel {
+  display: flex;
+  gap: 12rpx;
+  padding: 12rpx 20rpx 18rpx;
+  overflow-x: auto;
+  background: #f7f8fa;
+}
+
+.quick-button {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0 18rpx;
+  border-radius: 999rpx;
+  color: #374151;
+  background: #fff;
+  font-size: 24rpx;
+  line-height: 56rpx;
+}
+
+.composer {
+  display: flex;
+  align-items: flex-end;
+  gap: 16rpx;
+  padding: 18rpx 24rpx 28rpx;
+  background: #fff;
+  box-shadow: 0 -8rpx 30rpx rgba(15, 23, 42, 0.06);
+}
+
+.voice-button {
+  width: 160rpx;
+  margin: 0;
+  border-radius: 20rpx;
+  background: #fff7ed;
+  color: #f97316;
+  font-size: 24rpx;
+  line-height: 72rpx;
+}
+
+.voice-button-active {
+  background: #fed7aa;
+  color: #c2410c;
+}
+
+.composer-input {
+  flex: 1;
+  min-height: 72rpx;
+  max-height: 180rpx;
+  box-sizing: border-box;
+  padding: 18rpx 20rpx;
+  border-radius: 20rpx;
+  background: #f3f4f6;
+  color: #111827;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+.send-button {
+  width: 132rpx;
+  margin: 0;
+  border-radius: 20rpx;
+  background: #f97316;
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 72rpx;
+}

@@ -2,8 +2,15 @@
   <view class="page-title">地址管理</view>
   <view class="form-card">
     <view class="card-title">{{editingId ? '编辑地址' : '新增地址'}}</view>
+    <button class="wechat-address-btn" bindtap="chooseWechatAddress">使用微信收货地址</button>
     <input class="field-input" placeholder="联系人" value="{{form.contactName}}" data-field="contactName" bindinput="setField" />
     <input class="field-input" placeholder="手机号" value="{{form.contactPhone}}" data-field="contactPhone" bindinput="setField" />
+    <view class="region-row">
+      <input class="field-input region-input" placeholder="省份" value="{{form.province}}" data-field="province" bindinput="setField" />
+      <input class="field-input region-input" placeholder="城市" value="{{form.city}}" data-field="city" bindinput="setField" />
+      <input class="field-input region-input" placeholder="区县" value="{{form.district}}" data-field="district" bindinput="setField" />
+    </view>
+    <input class="field-input" placeholder="小区/园区/楼宇" value="{{form.communityName}}" data-field="communityName" bindinput="setField" />
     <input class="field-input" placeholder="详细地址" value="{{form.detailAddress}}" data-field="detailAddress" bindinput="setField" />
     <button class="save-btn" bindtap="saveAddress">保存地址</button>
   </view>

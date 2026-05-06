@@ -34,6 +34,51 @@ Page({
     this.setData({ [`form.${field}`]: event.detail.value });
   },
 
+  chooseWechatAddress() {
+    wx.chooseAddress({
+      success: (res) => {
+        const parsed = this.parseWechatAddress(res);
+        this.setData({
+          form: {
+            ...this.data.form,
+            ...parsed
+          }
+        });
+        wx.showToast({ title: '已导入微信地址', icon: 'success' });
+      },
+      fail: (error) => {
+        if (error && /cancel/i.test(error.errMsg || '')) return;
+        wx.showModal({
+          title: '无法获取地址',
+          content: '请确认已授权使用微信收货地址，或手动填写地址信息。',
+          confirmText: '知道了',
+          showCancel: false
+        });
+      }
+    });
+  },
+
+  parseWechatAddress(address) {
+    const detail = address.detailInfo || '';
+    const communityName = this.guessCommunityName(detail);
+    return {
+      contactName: address.userName || this.data.form.contactName,
+      contactPhone: address.telNumber || this.data.form.contactPhone,
+      province: address.provinceName || '',
+      city: address.cityName || '',
+      district: address.countyName || '',
+      detailAddress: detail,
+      communityName: communityName || this.data.form.communityName,
+      isDefault: this.data.form.isDefault
+    };
+  },
+
+  guessCommunityName(detail) {
+    if (!detail) return '';
+    const match = detail.match(/([^省市区县镇街道路号\d]{2,}(?:小区|花园|公寓|大厦|广场|园|城|苑|府|湾))/);
+    return match ? match[1] : '';
+  },
+
   editAddress(event) {
     const { id } = event.currentTarget.dataset;
     const current = this.data.addresses.find((item) => item.id === id);

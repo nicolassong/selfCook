@@ -23,10 +23,11 @@ services:
       context: ./backend-gin
     environment:
       PORT: 8080
-      CORS_ALLOW_ORIGINS: http://localhost:5173
-      MYSQL_DSN: root:root@tcp(mysql:3306)/selfcook?charset=utf8mb4&parseTime=True&loc=Local
-      UPLOAD_DIR: /app/uploads
-      PUBLIC_BASE_URL: http://localhost:8081
+      CORS_ALLOW_ORIGINS: ${CORS_ALLOW_ORIGINS:-http://localhost:5173}
+      MYSQL_DSN: ${MYSQL_DSN:-root:root@tcp(mysql:3306)/selfcook?charset=utf8mb4&parseTime=True&loc=Local}
+      UPLOAD_DIR: ${UPLOAD_DIR:-/app/uploads}
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:8081}
+      AI_SERVICE_URL: ${AI_SERVICE_URL:-http://ai-service:8001}
     ports:
       - "8081:8080"
     volumes:
@@ -34,6 +35,22 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+      ai-service:
+        condition: service_started
+    restart: unless-stopped
+
+  ai-service:
+    build:
+      context: ./ai-service
+    working_dir: /app
+    environment:
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek/deepseek-chat}
+      DEEPSEEK_BASE_URL: ${DEEPSEEK_BASE_URL:-https://api.deepseek.com}
+    volumes:
+      - ./ai-service:/app
+    ports:
+      - "8001:8001"
     restart: unless-stopped
 
   admin:

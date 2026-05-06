@@ -1,0 +1,39 @@
+<view class="chat-page">
+  <scroll-view class="messages" scroll-y scroll-with-animation scroll-into-view="{{scrollIntoView}}">
+    <block wx:for="{{messages}}" wx:key="id">
+      <view id="msg-{{item.id}}" class="message-row {{item.role}}">
+        <view class="message-bubble">
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{loading}}" class="message-row assistant">
+      <view class="message-bubble muted">正在生成推荐...</view>
+    </view>
+  </scroll-view>
+
+  <view class="quick-panel">
+    <block wx:for="{{quickPrompts}}" wx:key="text">
+      <button class="quick-button" size="mini" bindtap="useQuickPrompt" data-text="{{item.text}}">
+        {{item.label}}
+      </button>
+    </block>
+  </view>
+
+  <view class="composer">
+    <button
+      wx:if="{{voiceEnabled}}"
+      class="voice-button {{recording ? 'voice-button-active' : ''}}"
+      bindtouchstart="startVoiceInput"
+      bindtouchend="stopVoiceInput"
+      bindtouchcancel="stopVoiceInput"
+      disabled="{{loading}}"
+    >
+      {{recording ? '松开发送文字' : '按住说话'}}
+    </button>
+    <textarea class="composer-input" auto-height maxlength="500" placeholder="说说人数、预算、口味，我来帮你搭配团餐" value="{{inputValue}}" bindinput="onInput" />
+    <button class="send-button" bindtap="sendMessage" loading="{{loading}}" disabled="{{loading || !inputValue}}">
+      发送
+    </button>
+  </view>
+</view>

@@ -4,8 +4,8 @@ export type ApiResponse<T> = {
   data: T;
 };
 
-const API_BASE = 'http://localhost:8081/api/v1';
-const ASSET_BASE = 'http://localhost:8081';
+const API_BASE = import.meta.env.VITE_API_BASE || '/api/v1';
+const ASSET_BASE = import.meta.env.VITE_ASSET_BASE || API_BASE.replace(/\/api\/v1\/?$/, '');
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const response = await fetch(`${API_BASE}${path}`, {

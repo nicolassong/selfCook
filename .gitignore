@@ -15,6 +15,9 @@ pnpm-debug.log*
 .env
 .env.*
 !.env.example
+admin-lite/.env.local
+admin-lite/.env.*.local
+miniprogram/config.local.js
 
 # Node (admin-lite)
 admin-lite/node_modules/
